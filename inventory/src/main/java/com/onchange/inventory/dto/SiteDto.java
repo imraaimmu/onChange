@@ -1,5 +1,6 @@
 package com.onchange.inventory.dto;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,11 +10,11 @@ import javax.persistence.Id;
 public class SiteDto {
 
 	public long getSid() {
-		return sid;
+		return siteId;
 	}
 
 	public void setSid(long sid) {
-		this.sid = sid;
+		this.siteId = sid;
 	}
 
 	public String getSame() {
@@ -50,7 +51,8 @@ public class SiteDto {
 
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-	private long sid;
+	@Column(name = "site_id", unique = true, nullable = false)
+	private long siteId;
 	
 	private String same;
 	

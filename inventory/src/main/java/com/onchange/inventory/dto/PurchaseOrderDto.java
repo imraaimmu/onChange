@@ -3,23 +3,26 @@ package com.onchange.inventory.dto;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "purchase_order_dto")
 public class PurchaseOrderDto {
 
-	public long getPid() {
-		return pid;
+	
+	public long getPoId() {
+		return poId;
 	}
 
-	public void setPid(long pid) {
-		this.pid = pid;
+	public void setPoId(long poId) {
+		this.poId = poId;
 	}
 
 	public LocalDate getDate() {
@@ -28,14 +31,6 @@ public class PurchaseOrderDto {
 
 	public void setDate(LocalDate date) {
 		this.date = date;
-	}
-
-	public VendorPoLinkDto getVendor() {
-		return vendor;
-	}
-
-	public void setVendor(VendorPoLinkDto vendor) {
-		this.vendor = vendor;
 	}
 
 	public SiteDto getSite() {
@@ -110,7 +105,7 @@ public class PurchaseOrderDto {
 		this.actualDeliveryDate = actualDeliveryDate;
 	}
 
-	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "purchase_order_dto")
 	public List<ItemDto> getItems() {
 		return items;
 	}
@@ -152,17 +147,15 @@ public class PurchaseOrderDto {
 	}
 
 	@Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-	private long pid;
+	@Column(name = "po_id", unique = true, nullable = false)
+	private long poId;
 	
 	private LocalDate date;
 	
-	@OneToOne
-	@JoinColumn(name="vid")
-	private VendorPoLinkDto vendor;
+	@OneToOne(fetch = FetchType.LAZY, mappedBy = "vendorId", cascade = CascadeType.ALL)
+	private VendorsDto vendor;
 	
-	@OneToOne
-	@JoinColumn(name="sid")
+	@OneToOne(fetch = FetchType.LAZY, mappedBy = "site_id", cascade = CascadeType.ALL)
 	private SiteDto site; //.it contains delivery address
 	
 	private String contactPersonName;
@@ -181,7 +174,7 @@ public class PurchaseOrderDto {
 	
 	private LocalDate actualDeliveryDate;
 	
-	@ManyToOne
+	
 	private List<ItemDto> items;
 	
 	private Float grandTotal;

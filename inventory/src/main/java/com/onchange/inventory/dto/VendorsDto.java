@@ -1,5 +1,6 @@
 package com.onchange.inventory.dto;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -67,6 +68,7 @@ public class VendorsDto {
 
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name = "vendor_id", unique = true, nullable = false)
 	private long vendorId;
 	
 	private String name;
