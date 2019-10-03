@@ -33,6 +33,7 @@ public class PurchaseOrderDto {
 		this.date = date;
 	}
 
+	@OneToOne(fetch = FetchType.LAZY, mappedBy = "purchase_order_dto", cascade = CascadeType.ALL)
 	public SiteDto getSite() {
 		return site;
 	}
@@ -152,10 +153,17 @@ public class PurchaseOrderDto {
 	
 	private LocalDate date;
 	
-	@OneToOne(fetch = FetchType.LAZY, mappedBy = "vendorId", cascade = CascadeType.ALL)
 	private VendorsDto vendor;
 	
-	@OneToOne(fetch = FetchType.LAZY, mappedBy = "site_id", cascade = CascadeType.ALL)
+	@OneToOne(fetch = FetchType.LAZY, mappedBy = "purchase_order_dto", cascade = CascadeType.ALL)
+	public VendorsDto getVendor() {
+		return vendor;
+	}
+
+	public void setVendor(VendorsDto vendor) {
+		this.vendor = vendor;
+	}
+
 	private SiteDto site; //.it contains delivery address
 	
 	private String contactPersonName;
