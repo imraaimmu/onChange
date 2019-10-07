@@ -1,0 +1,65 @@
+package com.onchange.inventory.dao;
+
+import java.util.Optional;
+
+import com.onchange.inventory.dao.ItemDao;
+import com.onchange.inventory.dto.ItemDto;
+
+public class  ItemDaoImpl  implements ItemDao{
+
+	@Override
+	public <S extends ItemDto> S save(S entity) {
+		return null;
+	}
+
+	@Override
+	public <S extends ItemDto> Iterable<S> saveAll(Iterable<S> entities) {
+		return null;
+	}
+
+	@Override
+	public Optional<ItemDto> findById(Long id) {
+		return null;
+	}
+
+	@Override
+	public boolean existsById(Long id) {
+		return false;
+	}
+
+	@Override
+	public Iterable<ItemDto> findAll() {
+		return null;
+	}
+
+	@Override
+	public Iterable<ItemDto> findAllById(Iterable<Long> ids) {
+		return null;
+	}
+
+	@Override
+	public long count() {
+		return 0;
+	}
+
+	@Override
+	public void deleteById(Long id) {
+		
+	}
+
+	@Override
+	public void delete(ItemDto entity) {
+		
+	}
+
+	@Override
+	public void deleteAll(Iterable<? extends ItemDto> entities) {
+		
+	}
+
+	@Override
+	public void deleteAll() {
+		
+	}
+
+}

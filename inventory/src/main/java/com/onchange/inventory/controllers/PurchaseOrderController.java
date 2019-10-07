@@ -7,11 +7,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value={"/purchaseorder"})
 public class PurchaseOrderController {
 
-
-
 	@RequestMapping(value={"/insertPo"})
 	public void insertPo() {
-
+		
 	}
 
 	@RequestMapping(value={"/getPo"})

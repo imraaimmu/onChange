@@ -1,4 +1,4 @@
-package com.onchange.inventory.reporsitory;
+package com.onchange.inventory.dao;
 
 import org.springframework.data.repository.CrudRepository;
 
