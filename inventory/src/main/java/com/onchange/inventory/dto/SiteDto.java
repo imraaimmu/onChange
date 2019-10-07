@@ -55,8 +55,6 @@ public class SiteDto {
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name = "site_id", unique = true, nullable = false)
-	@OneToOne(fetch = FetchType.LAZY)
-	@PrimaryKeyJoinColumn
 	private long siteId;
 	
 	private String same;

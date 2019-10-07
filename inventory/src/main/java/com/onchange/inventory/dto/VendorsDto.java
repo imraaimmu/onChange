@@ -2,12 +2,9 @@ package com.onchange.inventory.dto;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
 
 @Entity
 public class VendorsDto {
@@ -71,9 +68,7 @@ public class VendorsDto {
 
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name = "vendor_id", unique = true, nullable = false)
-	@OneToOne(fetch = FetchType.LAZY)
-	@PrimaryKeyJoinColumn
+	@Column(unique = true, nullable = false)
 	private long vendorId;
 	
 	private String name;

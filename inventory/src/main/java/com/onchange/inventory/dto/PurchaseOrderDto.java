@@ -3,17 +3,14 @@ package com.onchange.inventory.dto;
 import java.time.LocalDate;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.Table;
 
 @Entity
-@Table(name = "purchase_order_dto")
 public class PurchaseOrderDto {
 
 	
@@ -33,7 +30,6 @@ public class PurchaseOrderDto {
 		this.date = date;
 	}
 
-	@OneToOne(fetch = FetchType.LAZY, mappedBy = "purchase_order_dto", cascade = CascadeType.ALL)
 	public SiteDto getSite() {
 		return site;
 	}
@@ -106,7 +102,6 @@ public class PurchaseOrderDto {
 		this.actualDeliveryDate = actualDeliveryDate;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "purchase_order_dto")
 	public List<ItemDto> getItems() {
 		return items;
 	}
@@ -153,9 +148,9 @@ public class PurchaseOrderDto {
 	
 	private LocalDate date;
 	
+	@OneToOne(fetch = FetchType.LAZY)
 	private VendorsDto vendor;
 	
-	@OneToOne(fetch = FetchType.LAZY, mappedBy = "purchase_order_dto", cascade = CascadeType.ALL)
 	public VendorsDto getVendor() {
 		return vendor;
 	}
@@ -163,7 +158,8 @@ public class PurchaseOrderDto {
 	public void setVendor(VendorsDto vendor) {
 		this.vendor = vendor;
 	}
-
+	
+	@OneToOne(fetch = FetchType.LAZY)
 	private SiteDto site; //.it contains delivery address
 	
 	private String contactPersonName;
@@ -182,7 +178,7 @@ public class PurchaseOrderDto {
 	
 	private LocalDate actualDeliveryDate;
 	
-	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "purchaseOrder",targetEntity=ItemDto.class)
 	private List<ItemDto> items;
 	
 	private Float grandTotal;

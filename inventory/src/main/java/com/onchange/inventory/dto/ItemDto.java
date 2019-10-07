@@ -79,8 +79,7 @@ public class ItemDto {
     @GeneratedValue(strategy=GenerationType.AUTO)
 	private long itemId;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "po_id", nullable = false)
+	@ManyToOne
 	private PurchaseOrderDto purchaseOrder;
 	
 	public PurchaseOrderDto getPurchaseOrder() {
