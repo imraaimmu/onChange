@@ -10,6 +10,10 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.onchange.inventory.dto.links.ItemLinkDto;
+import com.onchange.inventory.dto.links.SiteLinkDto;
+import com.onchange.inventory.dto.links.VendorLinkDto;
+
 @Entity
 public class PurchaseOrderDto {
 
@@ -22,19 +26,19 @@ public class PurchaseOrderDto {
 		this.poId = poId;
 	}
 
-	public LocalDate getDate() {
+	public String getDate() {
 		return date;
 	}
 
-	public void setDate(LocalDate date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 
-	public SiteDto getSite() {
+	public SiteLinkDto getSite() {
 		return site;
 	}
 
-	public void setSite(SiteDto site) {
+	public void setSite(SiteLinkDto site) {
 		this.site = site;
 	}
 
@@ -102,11 +106,11 @@ public class PurchaseOrderDto {
 		this.actualDeliveryDate = actualDeliveryDate;
 	}
 
-	public List<ItemDto> getItems() {
+	public List<ItemLinkDto> getItems() {
 		return items;
 	}
 
-	public void setItems(List<ItemDto> items) {
+	public void setItems(List<ItemLinkDto> items) {
 		this.items = items;
 	}
 
@@ -143,24 +147,24 @@ public class PurchaseOrderDto {
 	}
 
 	@Id
-	@Column(name = "po_id", unique = true, nullable = false)
+	@Column(unique = true, nullable = false)
 	private long poId;
 	
-	private LocalDate date;
+	private String date;
 	
 	@OneToOne(fetch = FetchType.LAZY)
-	private VendorsDto vendor;
+	private VendorLinkDto vendor;
 	
-	public VendorsDto getVendor() {
+	public VendorLinkDto getVendor() {
 		return vendor;
 	}
 
-	public void setVendor(VendorsDto vendor) {
+	public void setVendor(VendorLinkDto vendor) {
 		this.vendor = vendor;
 	}
 	
 	@OneToOne(fetch = FetchType.LAZY)
-	private SiteDto site; //.it contains delivery address
+	private SiteLinkDto site; //.it contains delivery address
 	
 	private String contactPersonName;
 	
@@ -178,8 +182,8 @@ public class PurchaseOrderDto {
 	
 	private LocalDate actualDeliveryDate;
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "purchaseOrder",targetEntity=ItemDto.class)
-	private List<ItemDto> items;
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "purchaseOrder",targetEntity=ItemLinkDto.class)
+	private List<ItemLinkDto> items;
 	
 	private Float grandTotal;
 	
@@ -188,7 +192,6 @@ public class PurchaseOrderDto {
 	private String checkedBy;
 	
 	private String authorizedBy;
-	
 	
 	
 }

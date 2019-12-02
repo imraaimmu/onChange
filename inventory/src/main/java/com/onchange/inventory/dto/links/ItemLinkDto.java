@@ -1,4 +1,4 @@
-package com.onchange.inventory.dto;
+package com.onchange.inventory.dto.links;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -6,8 +6,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.onchange.inventory.dto.PurchaseOrderDto;
+
 @Entity
-public class ItemDto {
+public class ItemLinkDto {
 
 	public long getItemId() {
 		return itemId;

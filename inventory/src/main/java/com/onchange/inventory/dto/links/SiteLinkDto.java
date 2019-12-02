@@ -1,4 +1,4 @@
-package com.onchange.inventory.dto;
+package com.onchange.inventory.dto.links;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,7 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class SiteDto {
+public class SiteLinkDto {
 
 	public long getSid() {
 		return siteId;
@@ -17,12 +17,12 @@ public class SiteDto {
 		this.siteId = sid;
 	}
 
-	public String getName() {
-		return name;
+	public String getSame() {
+		return same;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setSame(String same) {
+		this.same = same;
 	}
 
 	public String getAddress() {
@@ -54,7 +54,7 @@ public class SiteDto {
 	@Column(name = "site_id", unique = true, nullable = false)
 	private long siteId;
 	
-	private String name;
+	private String same;
 	
 	private String address;
 	

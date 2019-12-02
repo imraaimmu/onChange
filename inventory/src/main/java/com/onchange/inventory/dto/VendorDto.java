@@ -7,7 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class VendorsDto {
+public class VendorDto {
 
 	
 	public long getVendorId() {

@@ -1,13 +1,12 @@
 package com.onchange.inventory.dao;
 
-import org.springframework.data.repository.CrudRepository;
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.onchange.inventory.dto.ItemDto;
 
-public interface  ItemDao  extends CrudRepository<ItemDto, Long> {
-
+public interface  ItemDao  extends JpaRepository<ItemDto, Long> {
 	
-	
-	
-	
+	public List<ItemDto> findByItemNameContains(String name);
 }
