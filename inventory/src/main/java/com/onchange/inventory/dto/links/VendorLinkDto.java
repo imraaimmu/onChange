@@ -5,6 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
+import com.onchange.inventory.dto.PurchaseOrderDto;
 
 @Entity
 public class VendorLinkDto {
@@ -34,27 +37,27 @@ public class VendorLinkDto {
 		this.address = address;
 	}
 
-	public Integer getMobileNo() {
+	public String getMobileNo() {
 		return mobileNo;
 	}
 
-	public void setMobileNo(Integer mobileNo) {
+	public void setMobileNo(String mobileNo) {
 		this.mobileNo = mobileNo;
 	}
 
-	public Integer getLandline() {
+	public String getLandline() {
 		return landline;
 	}
 
-	public void setLandline(Integer landline) {
+	public void setLandline(String landline) {
 		this.landline = landline;
 	}
 
-	public Integer getAlternateNo() {
+	public String getAlternateNo() {
 		return alternateNo;
 	}
 
-	public void setAlternateNo(Integer alternateNo) {
+	public void setAlternateNo(String alternateNo) {
 		this.alternateNo = alternateNo;
 	}
 
@@ -68,19 +71,22 @@ public class VendorLinkDto {
 
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(unique = true, nullable = false)
+	@Column(name = "vendor_id",unique = true, nullable = false)
 	private long vendorId;
 	
 	private String name;
 	
 	private String address;
 	
-	private Integer mobileNo;
+	private String mobileNo;
 	
-	private Integer landline;
+	private String landline;
 	
-	private Integer alternateNo;
+	private String alternateNo;
 	
 	private String mailId;
+	
+	@OneToOne(mappedBy = "vendor",targetEntity = PurchaseOrderDto.class)
+	private PurchaseOrderDto purchaseOrderDto;
 	
 }

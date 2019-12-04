@@ -1,5 +1,6 @@
 package com.onchange.inventory.dto.links;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -77,6 +78,7 @@ public class ItemLinkDto {
 
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name = "item_id", unique = true, nullable = false)
 	private long itemId;
 	
 	@ManyToOne
@@ -103,8 +105,6 @@ public class ItemLinkDto {
 	private Float unitPrice;
 	
 	private Float totalPrice;
-	
-	
 	
 	
 }

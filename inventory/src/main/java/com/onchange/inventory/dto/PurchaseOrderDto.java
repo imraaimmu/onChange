@@ -182,7 +182,7 @@ public class PurchaseOrderDto {
 	
 	private LocalDate actualDeliveryDate;
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "purchaseOrder",targetEntity=ItemLinkDto.class)
+	@OneToMany(fetch = FetchType.LAZY,targetEntity=ItemLinkDto.class)
 	private List<ItemLinkDto> items;
 	
 	private Float grandTotal;

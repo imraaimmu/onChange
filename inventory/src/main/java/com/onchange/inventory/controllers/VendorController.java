@@ -24,7 +24,7 @@ public class VendorController {
 	
 	@CrossOrigin(origins = "http://localhost:3000", maxAge = 3600)
 	@RequestMapping(value={"/vendors"})
-	public ResponseEntity<?> showCustomers(int count) {
+	public ResponseEntity<?> showCustomers() {
 		return ResponseEntity.ok().body(vendorService.findAll());
 	}
 		
@@ -41,6 +41,10 @@ public class VendorController {
 
 	@RequestMapping(value={"/save","/update"})
 	public ResponseEntity<VendorDto> save(@RequestBody VendorDto entity) {
+//		if(entity.getVendorId() != 0) {
+//			if(vendorService.findById(entity.getVendorId()).isPresent())
+			vendorService.deleteById(entity.getVendorId());
+//		}
 		return ResponseEntity.ok().body(vendorService.save(entity));
 	}
 

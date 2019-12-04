@@ -41,11 +41,11 @@ public class SiteDto {
 		this.incharge = incharge;
 	}
 
-	public Integer getInchargeContactNumber() {
+	public String getInchargeContactNumber() {
 		return inchargeContactNumber;
 	}
 
-	public void setInchargeContactNumber(Integer inchargeContactNumber) {
+	public void setInchargeContactNumber(String inchargeContactNumber) {
 		this.inchargeContactNumber = inchargeContactNumber;
 	}
 
@@ -60,6 +60,6 @@ public class SiteDto {
 	
 	private String incharge;
 	
-	private Integer inchargeContactNumber;
+	private String inchargeContactNumber;
 	
 }

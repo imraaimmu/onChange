@@ -5,6 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
+import com.onchange.inventory.dto.PurchaseOrderDto;
 
 @Entity
 public class SiteLinkDto {
@@ -17,12 +20,12 @@ public class SiteLinkDto {
 		this.siteId = sid;
 	}
 
-	public String getSame() {
-		return same;
+	public String getName() {
+		return name;
 	}
 
-	public void setSame(String same) {
-		this.same = same;
+	public void setName(String same) {
+		this.name = same;
 	}
 
 	public String getAddress() {
@@ -41,11 +44,11 @@ public class SiteLinkDto {
 		this.incharge = incharge;
 	}
 
-	public Integer getInchargeContactNumber() {
+	public String getInchargeContactNumber() {
 		return inchargeContactNumber;
 	}
 
-	public void setInchargeContactNumber(Integer inchargeContactNumber) {
+	public void setInchargeContactNumber(String inchargeContactNumber) {
 		this.inchargeContactNumber = inchargeContactNumber;
 	}
 
@@ -54,12 +57,15 @@ public class SiteLinkDto {
 	@Column(name = "site_id", unique = true, nullable = false)
 	private long siteId;
 	
-	private String same;
+	private String name;
 	
 	private String address;
 	
 	private String incharge;
 	
-	private Integer inchargeContactNumber;
+	private String inchargeContactNumber;
+	
+	@OneToOne(mappedBy = "site",targetEntity = PurchaseOrderDto.class)
+	private PurchaseOrderDto purchaseOrderDto;
 	
 }

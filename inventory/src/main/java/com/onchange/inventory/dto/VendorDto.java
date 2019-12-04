@@ -34,27 +34,27 @@ public class VendorDto {
 		this.address = address;
 	}
 
-	public Integer getMobileNo() {
+	public String getMobileNo() {
 		return mobileNo;
 	}
 
-	public void setMobileNo(Integer mobileNo) {
+	public void setMobileNo(String mobileNo) {
 		this.mobileNo = mobileNo;
 	}
 
-	public Integer getLandline() {
+	public String getLandline() {
 		return landline;
 	}
 
-	public void setLandline(Integer landline) {
+	public void setLandline(String landline) {
 		this.landline = landline;
 	}
 
-	public Integer getAlternateNo() {
+	public String getAlternateNo() {
 		return alternateNo;
 	}
 
-	public void setAlternateNo(Integer alternateNo) {
+	public void setAlternateNo(String alternateNo) {
 		this.alternateNo = alternateNo;
 	}
 
@@ -75,11 +75,11 @@ public class VendorDto {
 	
 	private String address;
 	
-	private Integer mobileNo;
+	private String mobileNo;
 	
-	private Integer landline;
+	private String landline;
 	
-	private Integer alternateNo;
+	private String alternateNo;
 	
 	private String mailId;
 	

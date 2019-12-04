@@ -4,7 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 
 @Entity
 public class ItemDto {
@@ -77,17 +76,6 @@ public class ItemDto {
     @GeneratedValue(strategy=GenerationType.AUTO)
 	private long itemId;
 	
-	@ManyToOne
-	private PurchaseOrderDto purchaseOrder;
-	
-	public PurchaseOrderDto getPurchaseOrder() {
-		return purchaseOrder;
-	}
-
-	public void setPurchaseOrder(PurchaseOrderDto purchaseOrder) {
-		this.purchaseOrder = purchaseOrder;
-	}
-
 	private Integer sNo;
 	
 	private String itemName;

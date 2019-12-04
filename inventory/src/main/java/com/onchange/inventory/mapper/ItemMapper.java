@@ -2,16 +2,16 @@ package com.onchange.inventory.mapper;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import com.onchange.inventory.dto.ItemDto;
+import com.onchange.inventory.dto.PurchaseOrderDto;
 import com.onchange.inventory.dto.links.ItemLinkDto;
 
 public class ItemMapper {
 
-	public static ItemDto convertLinkToDto(ItemLinkDto linkDto) {
-		ItemDto itemDto = new ItemDto();
-		itemDto.setItemId(linkDto.getItemId());
+	public static ItemLinkDto convertDtoToLink(ItemDto linkDto,PurchaseOrderDto purchaseOrder) {
+		ItemLinkDto itemDto = new ItemLinkDto();
+//		itemDto.setItemId(linkDto.getItemId());
 		itemDto.setItemName(linkDto.getItemName());
 		itemDto.setMrp(linkDto.getMrp());
 		itemDto.setQuantity(linkDto.getQuantity());
@@ -19,12 +19,13 @@ public class ItemMapper {
 		itemDto.setTotalPrice(linkDto.getTotalPrice());
 		itemDto.setUnit(linkDto.getUnit());
 		itemDto.setUnitPrice(linkDto.getUnitPrice());
+		itemDto.setPurchaseOrder(purchaseOrder);
 		return itemDto;
 	}
 
-	public static List<ItemDto> convertLinkToDto(List<ItemLinkDto> items) {
+	public static List<ItemLinkDto> convertLinkToDto(List<ItemDto> items,PurchaseOrderDto purchaseOrder) {
 		return items.stream().map(item->{
-			return convertLinkToDto(item);
+			return convertDtoToLink(item,purchaseOrder);
 		}).collect(Collectors.toList());
 	}
 }

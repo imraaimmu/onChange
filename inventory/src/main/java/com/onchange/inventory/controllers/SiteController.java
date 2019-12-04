@@ -29,6 +29,10 @@ public class SiteController {
 
 	@RequestMapping(value={"/save","/update"})
 	public void save(@RequestBody SiteDto entity) {
+//		if(entity.getSid() != 0) {
+//			if(siteService.findById(entity.getSid()).isPresent())
+			siteService.deleteById(entity.getSid());
+//		}
 		siteService.save(entity);
 	}
 

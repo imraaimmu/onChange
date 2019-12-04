@@ -28,8 +28,12 @@ public class ItemController {
 	}
 
 	@RequestMapping(value={"/save","/update"})
-	public void save(@RequestBody ItemDto dto) {
-		itemService.save(dto);
+	public void save(@RequestBody ItemDto entity) {
+//		if(entity.getItemId() != 0) {
+//			if(itemService.findById(entity.getItemId()).isPresent())
+			itemService.deleteById(entity.getItemId());
+//		}
+		itemService.save(entity);
 	}
 
 	@RequestMapping(value={"/item/{id}"})
