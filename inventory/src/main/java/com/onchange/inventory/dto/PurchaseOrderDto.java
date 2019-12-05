@@ -156,7 +156,7 @@ public class PurchaseOrderDto {
 	
 	private String date;
 	
-	@OneToOne(fetch = FetchType.LAZY,cascade = {CascadeType.ALL})
+	@OneToOne(cascade = {CascadeType.ALL})
 	private VendorLinkDto vendor;
 	
 	public VendorLinkDto getVendor() {
@@ -167,7 +167,7 @@ public class PurchaseOrderDto {
 		this.vendor = vendor;
 	}
 	
-	@OneToOne(fetch = FetchType.LAZY,cascade = {CascadeType.ALL})
+	@OneToOne(cascade = {CascadeType.ALL})
 	private SiteLinkDto site; //.it contains delivery address
 	
 	private String contactPersonName;
@@ -186,7 +186,7 @@ public class PurchaseOrderDto {
 	
 	private LocalDate actualDeliveryDate;
 	
-	@OneToMany(fetch = FetchType.LAZY,targetEntity=ItemLinkDto.class,cascade = {CascadeType.ALL})
+	@OneToMany(targetEntity=ItemLinkDto.class,cascade = {CascadeType.ALL})
 	private List<ItemLinkDto> items;
 	
 	private Float grandTotal;

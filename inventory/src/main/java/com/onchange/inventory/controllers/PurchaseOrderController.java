@@ -107,8 +107,8 @@ public class PurchaseOrderController {
 	
 
 	@RequestMapping(value={"/po/{id}"})
-	public void getSingle(@PathVariable long id) {
-		purchaseOrderService.findById(id);
+	public Optional<PurchaseOrderDto> getSingle(@PathVariable long id) {
+		return purchaseOrderService.findById(id);
 	}
 	
 	@RequestMapping(value={"/delete/{id}"})
