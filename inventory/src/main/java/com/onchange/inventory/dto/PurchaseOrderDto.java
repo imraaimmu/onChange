@@ -3,9 +3,12 @@ package com.onchange.inventory.dto;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -147,23 +150,24 @@ public class PurchaseOrderDto {
 	}
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(unique = true, nullable = false)
 	private long poId;
 	
 	private String date;
 	
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.LAZY,cascade = {CascadeType.ALL})
 	private VendorLinkDto vendor;
 	
 	public VendorLinkDto getVendor() {
 		return vendor;
 	}
-
+	
 	public void setVendor(VendorLinkDto vendor) {
 		this.vendor = vendor;
 	}
 	
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.LAZY,cascade = {CascadeType.ALL})
 	private SiteLinkDto site; //.it contains delivery address
 	
 	private String contactPersonName;
@@ -182,7 +186,7 @@ public class PurchaseOrderDto {
 	
 	private LocalDate actualDeliveryDate;
 	
-	@OneToMany(fetch = FetchType.LAZY,targetEntity=ItemLinkDto.class)
+	@OneToMany(fetch = FetchType.LAZY,targetEntity=ItemLinkDto.class,cascade = {CascadeType.ALL})
 	private List<ItemLinkDto> items;
 	
 	private Float grandTotal;

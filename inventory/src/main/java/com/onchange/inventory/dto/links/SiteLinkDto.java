@@ -1,5 +1,6 @@
 package com.onchange.inventory.dto.links;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -65,7 +66,7 @@ public class SiteLinkDto {
 	
 	private String inchargeContactNumber;
 	
-	@OneToOne(mappedBy = "site",targetEntity = PurchaseOrderDto.class)
+	@OneToOne(mappedBy = "site",targetEntity = PurchaseOrderDto.class,cascade = {CascadeType.ALL})
 	private PurchaseOrderDto purchaseOrderDto;
 	
 }

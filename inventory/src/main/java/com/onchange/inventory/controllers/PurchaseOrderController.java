@@ -91,13 +91,10 @@ public class PurchaseOrderController {
 		}
 		
 		if(siteSuccess && itemSuccess && vendorSuccess) {
-			purchaseOrderService.save(purchaseOrder);
 			purchaseOrder.setVendor(vendorLinkDto);
 			purchaseOrder.setSite(siteLinkDto);
 			purchaseOrder.setItems(items);
-			vendorLinkDao.save(vendorLinkDto);
-			siteLinkDao.save(siteLinkDto);
-			itemLinkDao.saveAll(items);
+			purchaseOrderService.save(purchaseOrder);
 		}
 		
 	}

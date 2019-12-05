@@ -1,5 +1,6 @@
 package com.onchange.inventory.dto.links;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -81,7 +82,7 @@ public class ItemLinkDto {
 	@Column(name = "item_id", unique = true, nullable = false)
 	private long itemId;
 	
-	@ManyToOne
+	@ManyToOne(cascade = {CascadeType.ALL})
 	private PurchaseOrderDto purchaseOrder;
 	
 	public PurchaseOrderDto getPurchaseOrder() {

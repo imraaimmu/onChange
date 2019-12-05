@@ -1,5 +1,6 @@
 package com.onchange.inventory.dto.links;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -86,7 +87,7 @@ public class VendorLinkDto {
 	
 	private String mailId;
 	
-	@OneToOne(mappedBy = "vendor",targetEntity = PurchaseOrderDto.class)
+	@OneToOne(mappedBy = "vendor",targetEntity = PurchaseOrderDto.class,cascade = {CascadeType.ALL})
 	private PurchaseOrderDto purchaseOrderDto;
 	
 }
